@@ -23,8 +23,8 @@ const TransactionTable = () => {
   const { setContext } = useContext(CSVContext);
   const [deletedItem, setDeleteItem]: [any, Function] = useState({});
   const [filter, setFilter]: [Data[], Function] = useState([]);
-  const [searchedStatus, setSearchedStatus] = useState("");
-  const [searchedType, setSearchedType] = useState("");
+  const [searchedStatus, setSearchedStatus]: [string, Function] = useState("");
+  const [searchedType, setSearchedType]: [string, Function] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [editableElement, setEditableElement] = useState({});
   const [page, setPage] = useState(0);
@@ -42,12 +42,12 @@ const TransactionTable = () => {
   }, [store]);
 
   useEffect(() => {
-    setContext(renderCondition())
+    setContext(renderCondition());
     /***
      * i've use eslint disabler commend to remove eslint warning(if i'll add dependency, i'll get infinity loop)
      */
     // eslint-disable-next-line
-  },[renderCondition])
+  }, [renderCondition]);
 
   useEffect(() => {
     setFilter([]);
@@ -75,7 +75,7 @@ const TransactionTable = () => {
     } else {
       return filter;
     }
-  };
+  }
 
   function deleteItem(item: Data) {
     setData(data.filter((el) => el !== item));
@@ -93,6 +93,7 @@ const TransactionTable = () => {
             <Td isNumeric>{el.Amount}</Td>
             <Td>
               <button
+                  style={{color: "green"}}
                 onClick={() => {
                   setModal(2);
                   onOpen();
@@ -103,6 +104,7 @@ const TransactionTable = () => {
               </button>
               |{" "}
               <button
+                  style={{color: "red"}}
                 onClick={() => {
                   onOpen();
                   setDeleteItem(el);
@@ -154,8 +156,8 @@ const TransactionTable = () => {
       }
       return el;
     });
-    setContext(edited)
-    return edited
+    setContext(edited);
+    return edited;
   };
 
   const ModalCondition = () => {

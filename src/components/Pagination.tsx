@@ -14,7 +14,11 @@ const Pagination = (props: IProps) => {
     return props.data.map((el, index) => {
       if (index < length / 20)
         return (
-          <Button key={index} onClick={() => props.setPage(index)} colorScheme="teal">
+          <Button
+            key={index}
+            onClick={() => props.setPage(index)}
+            colorScheme="teal"
+          >
             {index}
           </Button>
         );
