@@ -1,4 +1,4 @@
-##Grocery App: https://github.com/EvgeniyKokaiko/CSVTransactions
+##CSV Transactions App: https://github.com/EvgeniyKokaiko/CSVTransactions
 ###Stack:
 * **React**
 
